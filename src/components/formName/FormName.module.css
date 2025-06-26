@@ -1,0 +1,13 @@
+.formName {
+    -webkit-text-size-adjust: 100%; /* Настройка размера текста для браузеров WebKit */
+    -webkit-tap-highlight-color: transparent; /* Отключение выделения при нажатии на мобильных устройствах */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; /* Шрифт */
+    font-style: normal; /* Нормальный стиль шрифта */
+    font-weight: 500; /* Полужирный шрифт */
+    line-height: 1.2; /* Высота строки */
+    font-size: 2.5rem; /* Размер шрифта */
+    margin-top: 0; /* Отступ сверху */
+    margin-bottom: 1.5rem !important; /* Отступ снизу */
+    text-align: left !important; /* Выравнивание текста по левому краю */
+    color: #00b274; /* Цвет текста */
+}
