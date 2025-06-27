@@ -1,0 +1,90 @@
+/* ResultModal.module.css */
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modalContent {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    max-width: 500px;
+    max-height: 70vh;
+    width: 90%;
+    overflow: hidden;
+}
+
+.modalHeader {
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.modalHeader.success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.modalHeader.error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.modalTitle {
+    margin: 0;
+    font-size: 18px;
+}
+
+.modalBody {
+    padding: 20px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.resultText {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    padding: 12px;
+    margin: 0;
+    white-space: pre-wrap;
+    word-break: break-word;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.modalFooter {
+    padding: 15px 20px;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.okButton {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    min-width: 80px;
+    transition: background-color 0.2s;
+}
+
+.okButton:hover {
+    background-color: #0056b3;
+}
+
+.okButton:focus {
+    outline: 2px solid #0056b3;
+    outline-offset: 2px;
+}

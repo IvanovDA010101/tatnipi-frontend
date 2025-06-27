@@ -1,5 +1,10 @@
 .appContainer {
     width: 100vw;
     height: 100vh;
-    background-image :url('/bg_tn.png');
+    background-image: url('/bg_tn.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    overflow: hidden; /* Предотвращает переполнение */
+    position: relative;
 }

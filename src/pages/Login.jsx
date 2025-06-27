@@ -16,7 +16,7 @@ const Login = () => {
         if (isAuthenticated) {
             navigate('/dash');
         }
-    }, [isAuthenticated]);
+    }, [isAuthenticated, navigate]);
 
 
     const handleSubmit = (e) => {

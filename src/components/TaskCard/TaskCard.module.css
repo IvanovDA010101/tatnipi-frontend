@@ -1,0 +1,226 @@
+/* TaskCard.module.css - Стили для карточки задачи в сетке */
+
+.taskCard {
+    padding: 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.2s ease;
+}
+
+.taskCard:hover {
+    background: #fafbfc;
+}
+
+.taskHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    gap: 20px;
+}
+
+.taskInfo {
+    flex: 1;
+}
+
+.taskName {
+    margin: 0 0 5px 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #2c3e50;
+    line-height: 1.3;
+}
+
+.taskDescription {
+    margin: 0;
+    font-size: 14px;
+    color: #6c757d;
+    line-height: 1.4;
+}
+
+.taskStatus {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.statusCompleted {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.statusPending {
+    background: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeaa7;
+}
+
+.statusIcon {
+    font-size: 16px;
+}
+
+.statusText {
+    font-size: 13px;
+}
+
+/* Детали задачи */
+.taskDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    flex: 1;
+    justify-content: space-between;
+}
+
+.taskMeta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.metaItem {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+}
+
+.metaLabel {
+    color: #6c757d;
+    font-weight: 500;
+}
+
+.metaValue {
+    color: #495057;
+    font-weight: 600;
+}
+
+/* Действия с задачей */
+.taskActionsContainer {
+    margin-top: auto;
+}
+
+.taskActions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.downloadButton {
+    padding: 8px 16px;
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex: 1;
+}
+
+.downloadButton:hover {
+    background: #218838;
+}
+
+.deleteButton {
+    padding: 8px 16px;
+    background: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.deleteButton:hover {
+    background: #c82333;
+}
+
+/* Прогресс */
+.taskProgress {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.progressBar {
+    flex: 1;
+    height: 6px;
+    background: #e9ecef;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progressFill {
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, #007bff, #0056b3);
+    border-radius: 3px;
+    animation: progressAnimation 2s ease-in-out infinite;
+}
+
+@keyframes progressAnimation {
+    0% { width: 30%; }
+    50% { width: 70%; }
+    100% { width: 30%; }
+}
+
+.progressText {
+    font-size: 14px;
+    color: #6c757d;
+    font-weight: 500;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .taskCard {
+        padding: 15px;
+    }
+
+    .taskHeader {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .taskStatus {
+        align-self: flex-start;
+    }
+
+    .taskMeta {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .taskActions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .downloadButton,
+    .deleteButton {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .taskName {
+        font-size: 15px;
+    }
+}
