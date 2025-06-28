@@ -1,24 +1,364 @@
-.loginForm {
-    box-sizing: border-box;
-    display: block;
-    margin-top: 0em;
-    unicode-bidi: isolate;
+/* LoginForm.module.css - Татнефть брендинг */
+
+/* Контейнер формы логина */
+.loginFormContainer {
+    width: 100%;
+    max-width: 420px;
+    background: rgba(255, 255, 255, 0.98);
+    border-radius: 24px;
+    padding: 48px 40px;
+    box-shadow:
+            0 25px 80px rgba(0, 178, 116, 0.25),
+            0 12px 40px rgba(240, 60, 70, 0.15),
+            0 4px 16px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    position: relative;
+    z-index: 10;
 }
 
-.inputForm {
-    display: block;
+/* Фирменный декоративный элемент сверху формы */
+.loginFormContainer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(90deg,
+    var(--tatneft-green-primary) 0%,
+    var(--tatneft-red-primary) 100%
+    );
+    border-radius: 24px 24px 0 0;
+}
+
+/* Форма */
+.loginForm {
     width: 100%;
-    height: calc(1.5em + .75rem + 2px);
-    padding: .375rem .75rem;
-    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* Группы полей ввода */
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Группа кнопки отправки */
+.submitGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 8px;
+}
+
+/* Группа ссылок */
+.linkGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+    margin-top: 8px;
+}
+
+/* Текст ссылки */
+.linkText {
+    font-size: 14px;
+    color: var(--tatneft-gray-dark);
+    font-family: var(--tatneft-font-family);
+    margin: 0;
+}
+
+/* Ссылка */
+.link {
+    color: var(--tatneft-green-primary);
+    text-decoration: none;
+    font-weight: 600;
+    font-family: var(--tatneft-font-family);
+    transition: all 0.3s ease;
+    border-bottom: 1px solid transparent;
+}
+
+.link:hover {
+    color: var(--tatneft-green-dark);
+    border-bottom-color: var(--tatneft-green-dark);
+    text-decoration: none;
+}
+
+/* Ссылка "Забыли пароль?" */
+.forgotLink {
+    color: var(--tatneft-red-primary);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: var(--tatneft-font-family);
+    transition: all 0.3s ease;
+}
+
+.forgotLink:hover {
+    color: var(--tatneft-red-dark);
+    text-decoration: underline;
+}
+
+/* Алерт ошибки */
+.errorAlert {
+    background: rgba(240, 60, 70, 0.1);
+    border: 1px solid var(--tatneft-red-primary);
+    border-radius: 12px;
+    padding: 16px;
+    color: var(--tatneft-red-primary);
+    font-size: 14px;
+    font-weight: 500;
+    font-family: var(--tatneft-font-family);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    animation: slideInAlert 0.3s ease;
+}
+
+.errorIcon {
+    font-size: 16px;
+}
+
+@keyframes slideInAlert {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Заголовок (если используется внутри формы) */
+.formTitle {
+    text-align: center;
+    margin-bottom: 32px;
+    font-family: var(--tatneft-font-family);
+}
+
+.formTitle h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg,
+    var(--tatneft-green-primary),
+    var(--tatneft-red-primary)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.formTitle p {
+    font-size: 16px;
+    color: var(--tatneft-gray-dark);
     font-weight: 400;
-    line-height: 1.5;
-    color: #495057;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid #ced4da;
-    border-radius: .25rem;
-    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-    margin-bottom: 20px;
-    margin-top: 25px;
+    margin: 0;
+}
+
+/* Фирменный логотип в форме */
+.brandLogo {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.brandLogo img {
+    height: 60px;
+    width: auto;
+    filter: drop-shadow(0 4px 8px rgba(0, 178, 116, 0.3));
+}
+
+/* Индикатор загрузки формы */
+.formLoading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    color: var(--tatneft-green-primary);
+    font-family: var(--tatneft-font-family);
+    font-weight: 500;
+}
+
+.formLoading::before {
+    content: '';
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(0, 178, 116, 0.3);
+    border-top: 2px solid var(--tatneft-green-primary);
+    border-radius: 50%;
+    margin-right: 12px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Успешное сообщение */
+.successAlert {
+    background: rgba(0, 178, 116, 0.1);
+    border: 1px solid var(--tatneft-green-primary);
+    border-radius: 12px;
+    padding: 16px;
+    color: var(--tatneft-green-primary);
+    font-size: 14px;
+    font-weight: 500;
+    font-family: var(--tatneft-font-family);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    animation: slideInAlert 0.3s ease;
+}
+
+.successIcon {
+    font-size: 16px;
+}
+
+/* Дополнительные опции (Remember me, etc.) */
+.optionsGroup {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 8px 0;
+    font-size: 14px;
+    font-family: var(--tatneft-font-family);
+}
+
+.checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--tatneft-gray-dark);
+    cursor: pointer;
+}
+
+.checkbox input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--tatneft-green-primary);
+    cursor: pointer;
+}
+
+/* Разделитель */
+.divider {
+    display: flex;
+    align-items: center;
+    margin: 24px 0;
+    color: var(--tatneft-silver);
+    font-size: 14px;
+    font-family: var(--tatneft-font-family);
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--tatneft-silver);
+    opacity: 0.3;
+}
+
+.divider::before {
+    margin-right: 16px;
+}
+
+.divider::after {
+    margin-left: 16px;
+}
+
+/* Социальные кнопки */
+.socialButtons {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.socialButton {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 16px;
+    border: 2px solid var(--tatneft-silver);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--tatneft-gray-dark);
+    text-decoration: none;
+    font-family: var(--tatneft-font-family);
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.socialButton:hover {
+    border-color: var(--tatneft-green-primary);
+    color: var(--tatneft-green-primary);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 178, 116, 0.15);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .loginFormContainer {
+        max-width: 380px;
+        padding: 36px 32px;
+        border-radius: 20px;
+    }
+
+    .formTitle h1 {
+        font-size: 28px;
+    }
+
+    .loginForm {
+        gap: 20px;
+    }
+
+    .submitGroup {
+        gap: 14px;
+    }
+
+    .socialButtons {
+        flex-direction: column;
+        gap: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .loginFormContainer {
+        max-width: 100%;
+        padding: 28px 24px;
+        border-radius: 16px;
+        margin: 16px;
+    }
+
+    .formTitle h1 {
+        font-size: 24px;
+    }
+
+    .formTitle p {
+        font-size: 14px;
+    }
+
+    .loginForm {
+        gap: 18px;
+    }
+
+    .linkText,
+    .optionsGroup {
+        font-size: 13px;
+    }
+
+    .forgotLink {
+        font-size: 12px;
+    }
 }

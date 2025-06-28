@@ -1,10 +1,257 @@
+/* App.module.css - Татнефть брендинг по официальному брендбуку */
+
+/* Импорт фирменного шрифта Pragmatica (с fallback на Arial) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Фирменные цвета Татнефти как CSS переменные (из брендбука) */
+:root {
+    /* Основные фирменные цвета */
+    --tatneft-green-primary: #00b274;   /* RGB: 0, 180, 115 */
+    --tatneft-green-dark: #006b47;      /* Темный зеленый */
+    --tatneft-green-light: #33c491;     /* Светлый зеленый (75%) */
+    --tatneft-red-primary: #f03c46;     /* RGB: 240, 60, 70 - точный цвет из брендбука */
+    --tatneft-red-dark: #bd2130;        /* Темный красный */
+    --tatneft-red-light: #f86c6b;       /* Светлый красный */
+
+    /* Дополнительные фирменные цвета */
+    --tatneft-white: #ffffff;           /* RGB: 255, 255, 255 */
+    --tatneft-silver: #999999;          /* RGB: 153, 153, 153 - светло-серый */
+    --tatneft-gray-dark: #807f83;       /* RGB: 128, 127, 131 - темно-серый */
+    --tatneft-gray-light: #f8f9fa;      /* Очень светлый серый для фонов */
+
+    /* Фирменный шрифт */
+    --tatneft-font-family: 'Inter', 'Arial', sans-serif; /* Fallback для Pragmatica */
+}
+
+/* Сброс базовых стилей */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    width: 100%;
+    font-family: var(--tatneft-font-family);
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--tatneft-gray-dark);
+}
+
+/* Основной контейнер приложения */
 .appContainer {
     width: 100vw;
-    height: 100vh;
-    background-image: url('/bg_tn.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    overflow: hidden; /* Предотвращает переполнение */
+    min-height: 100vh;
+    /* Фирменный фон с градиентом в цветах Татнефти */
+    background: linear-gradient(135deg,
+    var(--tatneft-green-primary) 0%,
+    var(--tatneft-green-dark) 50%,
+    #004d33 100%
+    );
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
     position: relative;
+    overflow-x: hidden;
+}
+
+/* Фирменный декоративный паттерн из брендбука (БЕЗ АНИМАЦИИ) */
+.appContainer::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+        /* Фирменные волны - красные и зеленые */
+            radial-gradient(ellipse at 20% 30%, rgba(240, 60, 70, 0.08) 0%, transparent 60%),
+            radial-gradient(ellipse at 80% 70%, rgba(0, 178, 116, 0.06) 0%, transparent 60%),
+            radial-gradient(ellipse at 40% 80%, rgba(240, 60, 70, 0.04) 0%, transparent 50%),
+                /* Фирменный паттерн с диагональными линиями */
+            linear-gradient(45deg,
+            transparent 30%,
+            rgba(255, 255, 255, 0.02) 50%,
+            transparent 70%
+            );
+    background-size:
+            600px 400px,
+            500px 350px,
+            400px 300px,
+            150px 150px;
+    background-position:
+            0% 0%,
+            100% 100%,
+            50% 50%,
+            0% 0%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Основной контент */
+.mainContent {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+
+/* Стили для страниц с хедером (Dashboard, Profile, Settings) */
+.protectedPage {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 95px);
+    width: 100%;
+    max-width: 100vw;
+    overflow: hidden; /* Убираем прокрутку */
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+/* Стили для страниц авторизации (Login, Register) */
+.authPage {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    min-height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Убираем фирменную карточку для форм авторизации (теперь она в компоненте) */
+
+/* Полноэкранный спиннер загрузки */
+.loadingOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg,
+    rgba(0, 178, 116, 0.95) 0%,
+    rgba(0, 107, 71, 0.95) 100%
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    backdrop-filter: blur(8px);
+}
+
+/* Стили для Error Boundary */
+.errorBoundary {
+    padding: 40px 20px;
+    text-align: center;
+    color: var(--tatneft-red-primary);
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 24px;
+    margin: 20px;
+    box-shadow:
+            0 20px 60px rgba(240, 60, 70, 0.25),
+            0 8px 32px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    border: 2px solid rgba(240, 60, 70, 0.2);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.errorBoundary h2 {
+    margin: 0 0 16px 0;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--tatneft-red-primary);
+    font-family: var(--tatneft-font-family);
+}
+
+.errorBoundary p {
+    margin: 0 0 24px 0;
+    font-size: 16px;
+    color: var(--tatneft-gray-dark);
+    line-height: 1.6;
+    font-family: var(--tatneft-font-family);
+}
+
+.errorBoundary button {
+    padding: 16px 32px;
+    background: linear-gradient(135deg,
+    var(--tatneft-green-primary),
+    var(--tatneft-green-dark)
+    );
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: var(--tatneft-font-family);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 6px 20px rgba(0, 178, 116, 0.3);
+}
+
+.errorBoundary button:hover {
+    background: linear-gradient(135deg,
+    var(--tatneft-green-dark),
+    #004d33
+    );
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 178, 116, 0.4);
+}
+
+.errorBoundary button:active {
+    transform: translateY(-1px);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .protectedPage {
+        padding: 16px;
+    }
+
+    .authPage {
+        padding: 16px;
+    }
+
+    .errorBoundary {
+        margin: 16px;
+        padding: 24px 16px;
+        border-radius: 16px;
+    }
+
+    .errorBoundary h2 {
+        font-size: 24px;
+    }
+
+    .errorBoundary button {
+        padding: 14px 28px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .protectedPage {
+        padding: 12px;
+    }
+
+    .authPage {
+        padding: 12px;
+    }
+
+    .errorBoundary {
+        margin: 12px;
+        padding: 20px 12px;
+    }
 }

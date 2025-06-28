@@ -1,0 +1,70 @@
+/* Register.module.css */
+.registerPage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.registerContainer {
+    width: 100%;
+    max-width: 450px;
+}
+
+.errorMessage {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    border: 1px solid #f5c6cb;
+    font-size: 14px;
+}
+
+.successMessage {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    border: 1px solid #c3e6cb;
+    font-size: 14px;
+}
+
+.validationError {
+    color: #dc3545;
+    font-size: 12px;
+    margin-top: 4px;
+    margin-bottom: 8px;
+}
+
+.passwordStrength {
+    margin-top: 8px;
+    font-size: 12px;
+}
+
+.passwordStrength.weak {
+    color: #dc3545;
+}
+
+.passwordStrength.medium {
+    color: #fd7e14;
+}
+
+.passwordStrength.strong {
+    color: #28a745;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .registerPage {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .registerPage {
+        padding: 10px;
+    }
+}

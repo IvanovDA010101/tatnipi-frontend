@@ -1,4 +1,3 @@
-// components/FullScreenToolContainer/FullScreenToolContainer.jsx
 import styles from './FullScreenToolContainer.module.css';
 import FormName from "../../components/formName/FormName.jsx";
 

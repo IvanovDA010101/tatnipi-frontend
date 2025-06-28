@@ -1,0 +1,411 @@
+/* Input.module.css - Татнефть брендинг по официальному брендбуку */
+
+/* Контейнер поля ввода */
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+    position: relative;
+}
+
+/* Лейбл */
+.inputLabel {
+    font-family: var(--tatneft-font-family);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--tatneft-gray-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 4px;
+    transition: color 0.3s ease;
+}
+
+.inputLabel.required::after {
+    content: ' *';
+    color: var(--tatneft-red-primary);
+    font-weight: 700;
+}
+
+/* Wrapper для поля ввода с иконкой */
+.inputWrapper {
+    position: relative;
+    width: 100%;
+}
+
+/* Основное поле ввода */
+.inputField {
+    width: 100%;
+    padding: 16px 20px;
+    border: 2px solid var(--tatneft-silver);
+    border-radius: 12px;
+    font-family: var(--tatneft-font-family);
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--tatneft-gray-dark);
+    background: rgba(255, 255, 255, 0.95);
+    transition: all 0.3s ease;
+    outline: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(10px);
+}
+
+/* Поле с иконкой */
+.inputField.withIcon {
+    padding-left: 52px;
+}
+
+.inputField.withIconRight {
+    padding-right: 52px;
+}
+
+/* Состояния поля ввода */
+.inputField:focus {
+    border-color: var(--tatneft-green-primary);
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 0 0 4px rgba(0, 178, 116, 0.1), 0 6px 20px rgba(0, 178, 116, 0.15);
+    transform: translateY(-2px);
+}
+
+.inputField:hover:not(:focus):not(:disabled) {
+    border-color: var(--tatneft-green-light);
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 4px 12px rgba(0, 178, 116, 0.1);
+    transform: translateY(-1px);
+}
+
+/* Состояние ошибки */
+.inputField.error {
+    border-color: var(--tatneft-red-primary) !important;
+    background: rgba(255, 248, 248, 0.95) !important;
+    /*box-shadow: 0 0 0 4px rgba(240, 60, 70, 0.1) !important, 0 4px 12px rgba(240, 60, 70, 0.15) !important;*/
+}
+
+.inputField.error:focus {
+    /*box-shadow: 0 0 0 4px rgba(240, 60, 70, 0.2) !important, 0 6px 20px rgba(240, 60, 70, 0.2) !important;*/
+}
+
+/* Состояние успеха */
+.inputField.success {
+    border-color: var(--tatneft-green-primary) !important;
+    background: rgba(248, 255, 252, 0.95) !important;
+    /*box-shadow: 0 0 0 4px rgba(0, 178, 116, 0.1) !important, 0 4px 12px rgba(0, 178, 116, 0.15) !important;*/
+}
+
+/* Отключенное состояние */
+.inputField:disabled {
+    background: var(--tatneft-gray-light);
+    border-color: var(--tatneft-silver);
+    color: var(--tatneft-silver);
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* Placeholder */
+.inputField::placeholder {
+    color: var(--tatneft-silver);
+    font-weight: 400;
+    opacity: 0.8;
+}
+
+.inputField:focus::placeholder {
+    opacity: 0.5;
+}
+
+/* Иконки */
+.inputIcon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: var(--tatneft-silver);
+    transition: all 0.3s ease;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.inputIcon.left {
+    left: 18px;
+}
+
+.inputIcon.right {
+    right: 18px;
+}
+
+/* Изменение цвета иконки при фокусе */
+.inputWrapper:focus-within .inputIcon {
+    color: var(--tatneft-green-primary);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.inputWrapper.error .inputIcon {
+    color: var(--tatneft-red-primary);
+}
+
+.inputWrapper.success .inputIcon {
+    color: var(--tatneft-green-primary);
+}
+
+/* Сообщения об ошибках */
+.errorMessage {
+    font-family: var(--tatneft-font-family);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--tatneft-red-primary);
+    margin-top: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    animation: slideInError 0.3s ease;
+}
+
+.errorMessage::before {
+    content: '⚠️';
+    font-size: 12px;
+}
+
+@keyframes slideInError {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Сообщения об успехе */
+.successMessage {
+    font-family: var(--tatneft-font-family);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--tatneft-green-primary);
+    margin-top: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    animation: slideInSuccess 0.3s ease;
+}
+
+.successMessage::before {
+    content: '✅';
+    font-size: 12px;
+}
+
+@keyframes slideInSuccess {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Текст подсказки */
+.helpText {
+    font-family: var(--tatneft-font-family);
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--tatneft-gray-dark);
+    margin-top: 4px;
+    opacity: 0.8;
+}
+
+/* Размеры полей */
+.small {
+    padding: 10px 16px;
+    font-size: 14px;
+    border-radius: 8px;
+}
+
+.small.withIcon {
+    padding-left: 42px;
+}
+
+.small.withIconRight {
+    padding-right: 42px;
+}
+
+.large {
+    padding: 20px 24px;
+    font-size: 18px;
+    border-radius: 16px;
+}
+
+.large.withIcon {
+    padding-left: 60px;
+}
+
+.large.withIconRight {
+    padding-right: 60px;
+}
+
+/* Специальные типы полей */
+.searchField {
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    box-shadow: 0 4px 15px rgba(0, 178, 116, 0.1), inset 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.searchField:focus {
+    background: rgba(255, 255, 255, 1);
+    border-color: var(--tatneft-green-primary);
+    box-shadow: 0 0 0 4px rgba(0, 178, 116, 0.15), 0 8px 25px rgba(0, 178, 116, 0.2);
+}
+
+/* Поле пароля */
+.passwordField {
+    font-family: monospace, var(--tatneft-font-family);
+    letter-spacing: 2px;
+}
+
+.passwordField:not(:placeholder-shown) {
+    letter-spacing: 4px;
+}
+
+/* Textarea */
+.textarea {
+    min-height: 120px;
+    resize: vertical;
+    padding: 16px 20px;
+    line-height: 1.6;
+    font-family: var(--tatneft-font-family);
+}
+
+.textarea.small {
+    min-height: 80px;
+    padding: 12px 16px;
+}
+
+.textarea.large {
+    min-height: 160px;
+    padding: 20px 24px;
+}
+
+/* Полная ширина */
+.fullWidth {
+    width: 100%;
+}
+
+/* Группы полей */
+.inputGroup {
+    display: flex;
+    gap: 12px;
+    align-items: flex-end;
+}
+
+.inputGroup .inputContainer {
+    flex: 1;
+}
+
+/* Floating label эффект */
+.floatingLabel {
+    position: relative;
+}
+
+.floatingLabel .inputLabel {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.9);
+    padding: 0 8px;
+    font-size: 16px;
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: normal;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    z-index: 3;
+}
+
+.floatingLabel .inputField:focus ~ .inputLabel,
+.floatingLabel .inputField:not(:placeholder-shown) ~ .inputLabel {
+    top: 0;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--tatneft-green-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+.floatingLabel .inputField.error ~ .inputLabel {
+    color: var(--tatneft-red-primary);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .inputField {
+        padding: 14px 18px;
+        font-size: 15px;
+        border-radius: 10px;
+    }
+
+    .inputField.withIcon {
+        padding-left: 48px;
+    }
+
+    .inputField.withIconRight {
+        padding-right: 48px;
+    }
+
+    .inputIcon {
+        font-size: 16px;
+    }
+
+    .inputIcon.left {
+        left: 16px;
+    }
+
+    .inputIcon.right {
+        right: 16px;
+    }
+
+    .inputGroup {
+        flex-direction: column;
+        gap: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .inputField {
+        padding: 12px 16px;
+        font-size: 14px;
+        border-radius: 8px;
+    }
+
+    .inputField.withIcon {
+        padding-left: 44px;
+    }
+
+    .inputField.withIconRight {
+        padding-right: 44px;
+    }
+
+    .inputIcon {
+        font-size: 14px;
+    }
+
+    .inputIcon.left {
+        left: 14px;
+    }
+
+    .inputIcon.right {
+        right: 14px;
+    }
+
+    .inputLabel {
+        font-size: 13px;
+    }
+
+    .errorMessage,
+    .successMessage,
+    .helpText {
+        font-size: 11px;
+    }
+}

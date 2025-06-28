@@ -1,0 +1,437 @@
+/* Button.module.css - Татнефть брендинг по официальному брендбуку */
+
+/* Базовые стили кнопки */
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border: 2px solid transparent;
+    border-radius: 12px;
+    font-family: var(--tatneft-font-family);
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.button:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(0, 178, 116, 0.2);
+}
+
+.button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* Размеры кнопок */
+.small {
+    padding: 8px 16px;
+    font-size: 12px;
+    border-radius: 8px;
+}
+
+.medium {
+    padding: 12px 24px;
+    font-size: 14px;
+    border-radius: 10px;
+}
+
+.large {
+    padding: 16px 32px;
+    font-size: 16px;
+    border-radius: 12px;
+}
+
+.extraLarge {
+    padding: 20px 40px;
+    font-size: 18px;
+    border-radius: 14px;
+}
+
+/* Варианты кнопок */
+
+/* Primary - Основной фирменный зеленый градиент */
+.primary {
+    background: linear-gradient(135deg,
+    var(--tatneft-green-primary),
+    var(--tatneft-green-dark)
+    );
+    color: white;
+    border-color: var(--tatneft-green-primary);
+    box-shadow: 0 6px 20px rgba(0, 178, 116, 0.3);
+}
+
+.primary:hover:not(:disabled) {
+    background: linear-gradient(135deg,
+    var(--tatneft-green-dark),
+    #004d33
+    );
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 178, 116, 0.4);
+}
+
+.primary:active:not(:disabled) {
+    background: var(--tatneft-green-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(0, 178, 116, 0.3);
+}
+
+/* Secondary - Серый с фирменными акцентами */
+.secondary {
+    background: linear-gradient(135deg,
+    rgba(255, 255, 255, 0.95),
+    rgba(248, 249, 250, 0.95)
+    );
+    color: var(--tatneft-green-primary);
+    border-color: var(--tatneft-silver);
+    box-shadow: 0 4px 15px rgba(153, 153, 153, 0.2);
+}
+
+.secondary:hover:not(:disabled) {
+    background: linear-gradient(135deg,
+    var(--tatneft-silver),
+    var(--tatneft-gray-dark)
+    );
+    color: white;
+    border-color: var(--tatneft-gray-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(128, 127, 131, 0.4);
+}
+
+.secondary:active:not(:disabled) {
+    background: var(--tatneft-gray-dark);
+    transform: translateY(0);
+    box-shadow: 0 4px 15px rgba(128, 127, 131, 0.3);
+}
+
+/* Success - Фирменный зеленый */
+.success {
+    background: linear-gradient(135deg,
+    var(--tatneft-green-light),
+    var(--tatneft-green-primary)
+    );
+    color: white;
+    border-color: var(--tatneft-green-primary);
+    box-shadow: 0 6px 20px rgba(51, 196, 145, 0.3);
+}
+
+.success:hover:not(:disabled) {
+    background: linear-gradient(135deg,
+    var(--tatneft-green-primary),
+    var(--tatneft-green-dark)
+    );
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 178, 116, 0.4);
+}
+
+.success:active:not(:disabled) {
+    background: var(--tatneft-green-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(0, 178, 116, 0.3);
+}
+
+/* Danger - Фирменный красный Татнефти */
+.danger {
+    background: linear-gradient(135deg,
+    var(--tatneft-red-primary),
+    var(--tatneft-red-dark)
+    );
+    color: white;
+    border-color: var(--tatneft-red-primary);
+    box-shadow: 0 6px 20px rgba(240, 60, 70, 0.3);
+}
+
+.danger:hover:not(:disabled) {
+    background: linear-gradient(135deg,
+    var(--tatneft-red-dark),
+    #a01e2a
+    );
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(240, 60, 70, 0.4);
+}
+
+.danger:active:not(:disabled) {
+    background: var(--tatneft-red-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(240, 60, 70, 0.3);
+}
+
+/* Warning - Желто-оранжевый с фирменными акцентами */
+.warning {
+    background: linear-gradient(135deg, #ffc107, #e0a800);
+    color: var(--tatneft-green-dark);
+    border-color: #ffc107;
+    box-shadow: 0 6px 20px rgba(255, 193, 7, 0.3);
+}
+
+.warning:hover:not(:disabled) {
+    background: linear-gradient(135deg, #e0a800, #d39e00);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(255, 193, 7, 0.4);
+}
+
+.warning:active:not(:disabled) {
+    background: #d39e00;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(255, 193, 7, 0.3);
+}
+
+/* Info - Синий с фирменными акцентами */
+.info {
+    background: linear-gradient(135deg, #17a2b8, #138496);
+    color: white;
+    border-color: #17a2b8;
+    box-shadow: 0 6px 20px rgba(23, 162, 184, 0.3);
+}
+
+.info:hover:not(:disabled) {
+    background: linear-gradient(135deg, #138496, #117a8b);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(23, 162, 184, 0.4);
+}
+
+.info:active:not(:disabled) {
+    background: #117a8b;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(23, 162, 184, 0.3);
+}
+
+/* Light - Светлый с фирменной обводкой */
+.light {
+    background: rgba(255, 255, 255, 0.95);
+    color: var(--tatneft-green-primary);
+    border-color: var(--tatneft-green-primary);
+    box-shadow: 0 4px 15px rgba(0, 178, 116, 0.15);
+}
+
+.light:hover:not(:disabled) {
+    background: var(--tatneft-green-primary);
+    color: white;
+    border-color: var(--tatneft-green-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 178, 116, 0.3);
+}
+
+.light:active:not(:disabled) {
+    background: var(--tatneft-green-dark);
+    transform: translateY(0);
+    box-shadow: 0 4px 15px rgba(0, 178, 116, 0.3);
+}
+
+/* Dark - Темно-серый */
+.dark {
+    background: linear-gradient(135deg,
+    var(--tatneft-gray-dark),
+    #343a40
+    );
+    color: white;
+    border-color: var(--tatneft-gray-dark);
+    box-shadow: 0 6px 20px rgba(128, 127, 131, 0.3);
+}
+
+.dark:hover:not(:disabled) {
+    background: linear-gradient(135deg, #343a40, #23272b);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(52, 58, 64, 0.4);
+}
+
+.dark:active:not(:disabled) {
+    background: #1d2124;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(52, 58, 64, 0.3);
+}
+
+/* Outline варианты */
+.outlinePrimary {
+    background: transparent;
+    color: var(--tatneft-green-primary);
+    border-color: var(--tatneft-green-primary);
+    box-shadow: 0 2px 8px rgba(0, 178, 116, 0.1);
+}
+
+.outlinePrimary:hover:not(:disabled) {
+    background: var(--tatneft-green-primary);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 178, 116, 0.3);
+}
+
+.outlineSecondary {
+    background: transparent;
+    color: var(--tatneft-gray-dark);
+    border-color: var(--tatneft-silver);
+    box-shadow: 0 2px 8px rgba(128, 127, 131, 0.1);
+}
+
+.outlineSecondary:hover:not(:disabled) {
+    background: var(--tatneft-gray-dark);
+    color: white;
+    border-color: var(--tatneft-gray-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(128, 127, 131, 0.3);
+}
+
+.outlineDanger {
+    background: transparent;
+    color: var(--tatneft-red-primary);
+    border-color: var(--tatneft-red-primary);
+    box-shadow: 0 2px 8px rgba(240, 60, 70, 0.1);
+}
+
+.outlineDanger:hover:not(:disabled) {
+    background: var(--tatneft-red-primary);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(240, 60, 70, 0.3);
+}
+
+/* Полная ширина */
+.fullWidth {
+    width: 100%;
+}
+
+/* Состояние загрузки */
+.loading {
+    pointer-events: none;
+    position: relative;
+    color: transparent !important;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top: 2px solid currentColor;
+    border-radius: 50%;
+    animation: buttonSpin 1s linear infinite;
+}
+
+.loading.secondary::after,
+.loading.light::after,
+.loading.outlinePrimary::after,
+.loading.outlineSecondary::after {
+    border: 2px solid rgba(0, 178, 116, 0.3);
+    border-top: 2px solid var(--tatneft-green-primary);
+}
+
+@keyframes buttonSpin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Группа кнопок */
+.buttonGroup {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.buttonGroup .button {
+    flex: 1;
+    min-width: 120px;
+}
+
+/* Иконки в кнопках */
+.buttonIcon {
+    font-size: 16px;
+    line-height: 1;
+}
+
+.small .buttonIcon {
+    font-size: 14px;
+}
+
+.large .buttonIcon {
+    font-size: 18px;
+}
+
+.extraLarge .buttonIcon {
+    font-size: 20px;
+}
+
+/* Специальные фирменные эффекты */
+.button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+    );
+    transition: left 0.5s ease;
+}
+
+.button:hover::before {
+    left: 100%;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .button {
+        padding: 10px 20px;
+        font-size: 13px;
+    }
+
+    .small {
+        padding: 6px 12px;
+        font-size: 11px;
+    }
+
+    .large {
+        padding: 14px 28px;
+        font-size: 15px;
+    }
+
+    .extraLarge {
+        padding: 16px 32px;
+        font-size: 16px;
+    }
+
+    .buttonGroup {
+        gap: 8px;
+    }
+
+    .buttonGroup .button {
+        min-width: 100px;
+    }
+}
+
+@media (max-width: 480px) {
+    .button {
+        padding: 8px 16px;
+        font-size: 12px;
+        letter-spacing: 0.5px;
+    }
+
+    .buttonGroup {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .buttonGroup .button {
+        min-width: auto;
+        width: 100%;
+    }
+}
